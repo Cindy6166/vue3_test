@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05_The_Responsive_Prnciple_of_Vue3</title>
+</head>
+
+<body>
+    <script>
+        //data
+        let person = {
+            name: 'Tom',
+            age: 20
+        }
+
+        // Vue2 realize responsive
+        //#region
+        // let p = {}
+        // Object.defineProperty(p,'name',{
+        //     configurable:true,
+        //     get(){
+        //         return person.name
+        //     },
+        //     set(value){
+        //         console.log('name was been modified');
+        //         person.name = value
+        //     }
+        // })
+        // Object.defineProperty(p,'age',{
+        //     get(){
+        //         return person.age
+        //     },
+        //     set(value){
+        //         console.log('name was been modified');
+        //         person.age = value
+        //     }
+        // })
+        //#endregion
+
+        // Vue3 realize responsive
+        //#region
+        const p = new Proxy(person, {
+            // read
+            get(target,propName){
+                console.log(`get ${propName} on p`);
+                return Reflect.get(target,propName)
+            },
+
+            //update, add
+            set(target,propName,value){
+                console.log(`modify ${propName}, to update new value: ${value}`);
+                Reflect.set(target,propName,value)
+            },
+
+            //delete
+            deleteProperty(target,propName){
+                console.log(`delete ${propName}`);
+                return Reflect.deleteProperty(target,propName)
+            }
+        })
+        //#endregion
+
+        let obj = { a: 1, b: 2 }
+        // through Object.defineProperty
+        //#region
+        // try {
+        //     Object.defineProperty(obj, 'c', {
+        //         get() {
+        //             return 3
+        //         }
+        //     })
+        //     Object.defineProperty(obj, 'c', {
+        //         get() {
+        //             return 4
+        //         }
+        //     })
+        // } catch (error) {
+        //     console.log(error);
+        // }
+        //#endregion
+        
+        // through Reflect.defineProperty
+        //#region
+        // const x1 = Reflect.defineProperty(obj, 'c', {
+        //     get() {
+        //         return 3
+        //     }
+        // })
+        // console.log(x1);
+
+        // const x2 = Reflect.defineProperty(obj, 'c', {
+        //     get() {
+        //         return 4
+        //     }
+        // })
+        // console.log(x2);
+        //#endregion
+
+        console.log('@@@');
+
+    </script>
+
+</body>
+
+</html>
