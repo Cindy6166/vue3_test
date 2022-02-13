@@ -2,7 +2,7 @@
   <h1>information</h1>
   <h2>Name: {{ name }}</h2>
   <h2>Age: {{ age }}</h2>
-  <h2>Gender: {{sex}}</h2>
+  <h2>Gender: {{gender}}</h2>
   <h2>a is: {{a}}</h2>
   <br>
   <button @click="sayHello">say Hello (config by vue3)</button>

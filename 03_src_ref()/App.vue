@@ -2,7 +2,7 @@
   <h1>information</h1>
   <h2>Name: {{ name }}</h2>
   <h2>Age: {{ age }}</h2>
-  <br />
+  <br>
   <h3>Occupation</h3>
   <h3>title: {{ job.title }}</h3>
   <h3>salary: {{ job.salary }}</h3>
@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import {ref} from 'vue'
 export default {
   name: "App",
   setup() {
@@ -18,9 +18,9 @@ export default {
     let name = ref("Tom");
     let age = ref(18);
     let job = ref({
-      title: "Frontend Engineer",
-      salary: "80k",
-    });
+      title: 'Frontend Engineer',
+      salary:'80k'
+    })
 
     //methods
     function sayHello() {
@@ -28,22 +28,21 @@ export default {
     }
 
     function changeInfo() {
-      name.value = "LaLa",
-      age.value = "20",
-      job.value.title = "UI Designer",
-      job.value.salary = "70k";
-      // console.log(job); //refImpl {}
-      // console.log(job.value); // proxy {}
+      name.value = 'LaLa',
+      age.value = '20',
+      job.value.title = 'UI Designer',
+      job.value.salary = '70k'
+      // console.log(job.value);
     }
 
     // return an object
-    return {
-      name,
-      age,
-      job,
-      sayHello,
-      changeInfo,
-    };
+     return{
+       name,
+       age,
+       job,
+       sayHello,
+       changeInfo
+     }
   },
 };
 </script>
