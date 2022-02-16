@@ -1,7 +1,6 @@
 <template>
   <div class="app">
     <h3>App</h3>
-    <Child/>
   </div>
 </template>
 
